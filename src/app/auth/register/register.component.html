@@ -1,0 +1,82 @@
+<div id="register-page">
+  <div class="header">
+    <h1>REGISTER</h1>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+  
+    <mat-form-field appearance="fill">
+      <mat-label>What's your first name?</mat-label>
+      <input
+        matInput
+        placeholder="First name"
+        formControlName="firstName"
+        required
+        name="firstName"
+        autocomplete="on"
+      />
+      <mat-hint class="error" *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">Your first name needs to be at least 2 letters long!
+      </mat-hint>  
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>What's your last name?</mat-label>
+      <input
+        matInput
+        placeholder="Last name"
+        formControlName="lastName"
+        required
+        name="lastName"
+        autocomplete="on"
+      />
+      <mat-hint class="error" *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">Your last name needs to be at least 2 letters long!
+      </mat-hint>
+    </mat-form-field>
+ 
+    <mat-form-field appearance="fill">
+      <mat-label>What's your email?</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        required
+        name="email"
+        autocomplete="on"
+      />
+      <mat-hint class="error" *ngIf="email.invalid && (email.touched || email.dirty)">Please enter a valid email address!
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter password.</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        formControlName="password"
+        required
+        name="password"
+        autocomplete="on"
+      />
+      <mat-hint class="error" *ngIf="password.invalid && (password.touched || password.dirty)">Enter a combination of at least six numbers, letters and punctuation marks.
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Re-enter password!</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        formControlName="passwordCheck"
+        required
+        name="password"
+        autocomplete="on"
+      />
+      <mat-hint class="error" *ngIf="passwordCheck.invalid && passwordCheck.touched">Passwords do not match.
+      </mat-hint>
+    </mat-form-field>
+
+    <a [routerLink]="'/auth/login'">Already have an account? Login!</a>
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">REGISTER</button>
+  </form>
+</div>

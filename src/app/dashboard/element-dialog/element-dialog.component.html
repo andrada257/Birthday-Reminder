@@ -1,0 +1,36 @@
+<p>element-dialog works!</p>
+<h1 mat-dialog-title>{{isOnEdit ? 'Edit' : 'Add'}} element</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="newPerson">
+        <mat-form-field>
+            <input matInput [readonly]="isOnEdit" placeholder="Position" formControlName="position">
+            <mat-error>This field is required accepted</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error>At least three characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Surname" formControlName="surname">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="Number" formControlName="number">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="City" formControlName="city">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Birthday" formControlName="birthday">
+        </mat-form-field>
+    </form>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button [mat-dialog-close]="newPerson" [disabled]= "newPerson.invalid" cdkFocusInitial>Ok</button>
+    </div>
